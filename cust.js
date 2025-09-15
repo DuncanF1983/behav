@@ -2,7 +2,7 @@
 
 module.exports = async function instagramArchive(page) {
   // Zum Instagram-Profil wechseln (Profilname anpassen)
-  await page.goto('https://www.instagram.com/dein_profil/');
+  await page.goto('https://www.instagram.com/spardabanknuernberg_/');
 
   // Alle Posts durch Scrollen laden
   let prevHeight = 0;
