@@ -1,10 +1,6 @@
-// instagramArchive.js
-
 module.exports = async function instagramArchive(page) {
-  // Zum Instagram-Profil wechseln (Profilname anpassen)
   await page.goto('https://www.instagram.com/spardabanknuernberg_/');
 
-  // Alle Posts durch Scrollen laden
   let prevHeight = 0;
   while (true) {
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
@@ -14,7 +10,6 @@ module.exports = async function instagramArchive(page) {
     prevHeight = newHeight;
   }
 
-  // Freundesliste (Follower) öffnen und komplett laden
   await page.click('a[href$="/followers/"]');
   await page.waitForSelector('div[role="dialog"]');
   let prevFollowerHeight = 0;
@@ -31,9 +26,4 @@ module.exports = async function instagramArchive(page) {
     if (newFollowerHeight === prevFollowerHeight) break;
     prevFollowerHeight = newFollowerHeight;
   }
-
-  // Optional: Gleiches Vorgehen für "Following"
-  // await page.click('a[href$="/following/"]');
-  // await page.waitForSelector('div[role="dialog"]');
-  // ... analoges Scrollen wie oben
 };
